@@ -1,0 +1,13 @@
+{
+    "name": "Jeden z Dziesieciu",
+    "version": "0.0.1",
+    "description": "JzD",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "socket.io": "0.9.x",
+        "express": "3.x"       
+        
+        }
+}
