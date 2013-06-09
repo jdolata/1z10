@@ -1,0 +1,8 @@
+extends layout
+
+block content 
+	#content
+		form(id='loginForm',action='/',method='POST')
+			label PanelLogowania
+			input(id='username',type='text',name='username')
+			input(id='submit',type='submit',value='zaloguj')
