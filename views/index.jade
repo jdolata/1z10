@@ -3,6 +3,19 @@ extends layout
 block content 
 	#content
 		form(id='loginForm',action='/',method='POST')
-			label PanelLogowania
+			label Podaj imię/nick
 			input(id='username',type='text',name='username')
-			input(id='submit',type='submit',value='zaloguj')
+			input(id='submit',type='submit',value='Rozpocznij Grę')
+		
+		#rules
+			p 
+				|	Zasady:
+				| Podczas rozgrywki wyświetlają się losowo kolejne pytania,
+				| by zgłosić chęć odpowiedzi na pytanie należy nacisnąć przycisk,
+				| gracz który przycisk nacisnie pierwszy odpowiada.
+				| Za poprawną odpowiedź dodawane są punkty, za błędną odejmowana szansa. 
+				| Gracz który odpowie 3 razy niepoprawnie przegrywa i odpada.
+				| Gracz który opuści rozgrywkę  trakcie również przegrywa, przeciwnikowi przyznawany jest walkower.
+
+footer
+	p Running on node with Express, Jade and Socket
