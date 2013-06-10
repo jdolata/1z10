@@ -1,5 +1,6 @@
-exports.question = function(pytanko){
+exports.question = function(){
 	
 	var x=Math.floor((Math.random()*10)+1);
-	pytanko=("/images/img", x,".jpg");
+	var pytanko="img0"+x+".jpg";
+	return pytanko;
 };

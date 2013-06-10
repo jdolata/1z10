@@ -6,6 +6,7 @@ var url = require('url');
 var routes = require('./routes'); 
 var session = require('./controllers/usercontroller');
 var app = express();
+var pytanka = [];
 var pytanko = require('./controllers/questioncontroller');
 
 app.configure(function () {
@@ -53,6 +54,7 @@ io.on('connection', function(socket){
  	socket.on('addUser', function(data){
     data.users = users; 
  	  console.log('APP: ' + data.username);
+    console.log(pytanko);
     session.login(io, socket, data);
   });
 });
