@@ -6,6 +6,7 @@ var url = require('url');
 var routes = require('./routes'); 
 var session = require('./controllers/usercontroller');
 var app = express();
+var pytanko = require('./controllers/questioncontroller');
 
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
