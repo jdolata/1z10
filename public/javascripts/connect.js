@@ -10,15 +10,17 @@ $(document).ready(function(){
 		});
 	});
 
-	io.sockets.on('updateList', function(data){
+	socket.on('updateList', function(data){
 		$('#usersList').empty();
 		data.forEach(function(el){
 			$('#usersList').append('<p>' + el + '</p><br />');
 		});
 	});
 
-	$(document).on('click','#getQuestion', function(){
+	$(document).on('click', '#getQuestion', function(){
+		var username = $('#userpanel').text();
 		socket.emit('getQuestion', {
+			username: username
 		});
 	});
 
@@ -28,14 +30,18 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click','#sendAnswer', function(){
-			var username =$('#userpanel').text();
+			var username = $('#userpanel').text();
 			//var time = getTime();
-			console.log(username);
 			socket.emit('sendAnswer', {
-				username: username,
+				username: username
 				//time: time
 			});
 	});
+
+	/*socket.on('sendAnswer', function(data){
+		$('#answer').empty();
+		$('#answer').append("<textarea name="odpowiedź">Podaj odpowiedź</textarea>");
+	});*/
 
 	$(document).on('click','#goodAnswer', function(){
 		
@@ -45,5 +51,4 @@ $(document).ready(function(){
 		
 	});
 });
-
 
