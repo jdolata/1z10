@@ -29,6 +29,10 @@ $(document).ready(function(){
 		$('#question').append("<img src="+data.path+" alt='pytanie' />");
 	});
 
+	$(document).on('click','#op', function(){
+
+	});
+
 	$(document).on('click','#goodAnswer', function(){
 		
 	});
