@@ -72,9 +72,13 @@ io.on('connection', function(socket){
   });
 
   socket.on('getAnswer', function(data){
-    var czas = data.czas;
-    console.log('PRZED:'+ data);
-    session.getCzas(io, socket, data);
-
+    console.log(data.username);
   });
+  /*socket.on('sendAnswer', function(data){
+    var czas = data.time;
+    var username = data.username;
+    console.log('PRZED:'+ data);
+    //session.getCzas(io, socket, data);
+
+  });*/
 });

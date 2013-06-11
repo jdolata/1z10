@@ -1,7 +1,7 @@
 exports.login = function(io, socket, data){
 	data.users.push(data.username);
 	io.on('connection', function(socket){
-		socket.emit('updateList', data.users);
+		io.sockets.emit('updateList', data.users);
 	});
 };
 
@@ -19,7 +19,7 @@ exports.getQuestion = function(io, socket, data){
 		data.questions.push(pytanko);
 		console.log('CONTROLLER PATH: ' + pytanko);
 	};
-	socket.broadcast.emit('sendQuestion', {
+	io.sockets.emit('sendQuestion', {
 		username: data.username,
 		path : pytanko
 	});

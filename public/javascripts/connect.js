@@ -19,21 +19,21 @@ $(document).ready(function(){
 
 	$(document).on('click','#getQuestion', function(){
 		socket.emit('getQuestion', {
-			//username: 'Ala'
 		});
 	});
 
 	socket.on('sendQuestion', function(data){
-		//alert(data.path);
 		$('#question').empty();
 		$('#question').append("<img src="+data.path+" alt='pytanie' />");
 	});
 
-	$(document).on('click','#getAnswer', function(){
+	$(document).on('click','#sendAnswer', function(){
+			var username =$('#userpanel').text();
 			var czas = getTime();
-			console.log(czas);
-			socket.emit('getAnswer', {
-
+			console.log(username);
+			socket.emit('setAnswer', {
+				username: username,
+				time: time
 			});
 	});
 
@@ -45,3 +45,5 @@ $(document).ready(function(){
 		
 	});
 });
+
+
