@@ -7,6 +7,10 @@ exports.main = function(req,res){
 		req.session.user = req.session.user || req.app.get('user');
 		res.render('main', { title: 'JzD', username: req.session.user.username});
 	} else{
-    	res.render('main', { title: 'JzD', username: 'Twoja nazwa użytkownika'});
+    	res.render('main', { title: 'JzD', username: 'Andrzej'});
     }
+};
+
+exports.op = function(req,res){
+	res.render('op', { title: 'JzD', username: 'Operator'});
 };

@@ -16,4 +16,28 @@ $(document).ready(function(){
 			$('#usersList').append('<p>' + el + '</p><br />');
 		});
 	});
+
+	$(document).on('click','#getQuestion', function(){
+		socket.emit('getQuestion', {
+			//username: 'Ala'
+		});
+	});
+
+	socket.on('sendQuestion', function(data){
+		//alert(data.path);
+		$('#question').empty();
+		$('#question').append("<img src="+data.path+" alt='pytanie' />");
+	});
+
+	$(document).on('click','#op', function(){
+
+	});
+
+	$(document).on('click','#goodAnswer', function(){
+		
+	});
+
+	$(document).on('click','#badAnswer', function(){
+		
+	});
 });

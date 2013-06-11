@@ -6,8 +6,7 @@ var url = require('url');
 var routes = require('./routes'); 
 var session = require('./controllers/usercontroller');
 var app = express();
-var pytanka = [];
-var pytanko = require('./controllers/questioncontroller');
+//var pytanko = require('./controllers/questioncontroller');
 
 app.configure(function () {
   app.set('port', process.env.PORT || 3000);
@@ -38,9 +37,12 @@ app.post('/', function (req, res){
   req.session.user = req.session.user || req.app.get('user');
   req.session.user.username = req.body.username;
   res.redirect('/main');
+  if (req.body.username == "Operator")
+    res.redirect('op');
 });
 app.get('/', routes.index);
 app.get('/main', routes.main);
+app.get('/op', routes.op);
 
   	// Create server
 var server = http.createServer(app).listen(app.get('port'), function () {
@@ -48,13 +50,24 @@ var server = http.createServer(app).listen(app.get('port'), function () {
 });
 
 var users = [];
+var questions = [];
 
 var io=require('socket.io').listen(server);
 io.on('connection', function(socket){
+
  	socket.on('addUser', function(data){
     data.users = users; 
  	  console.log('APP: ' + data.username);
-    console.log(pytanko);
     session.login(io, socket, data);
+  });
+
+  socket.on('getQuestion', function(data){
+    console.log('JESTEM W SERWERZE');
+    var username = data.username;
+    console.log('APP DATA USERNAME :' + username);
+    data.questions = questions;
+    console.log('APP DATA: ' + data);
+    session.getQuestion(io, socket, data);
+    console.log('qestions:' + data);
   });
 });
