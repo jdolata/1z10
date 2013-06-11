@@ -68,17 +68,15 @@ io.on('connection', function(socket){
     data.questions = questions;
     console.log('APP DATA: ' + data);
     session.getQuestion(io, socket, data);
-    console.log('qestions:' + data);
+    console.log('questions:' + data);
   });
 
-  socket.on('getAnswer', function(data){
-    console.log(data.username);
-  });
-  /*socket.on('sendAnswer', function(data){
-    var czas = data.time;
+  
+  socket.on('sendAnswer', function(data){
+    //var czas = data.time;
     var username = data.username;
     console.log('PRZED:'+ data);
     //session.getCzas(io, socket, data);
 
-  });*/
+  });
 });

@@ -10,7 +10,7 @@ $(document).ready(function(){
 		});
 	});
 
-	socket.on('updateList', function(data){
+	io.sockets.on('updateList', function(data){
 		$('#usersList').empty();
 		data.forEach(function(el){
 			$('#usersList').append('<p>' + el + '</p><br />');
@@ -29,11 +29,11 @@ $(document).ready(function(){
 
 	$(document).on('click','#sendAnswer', function(){
 			var username =$('#userpanel').text();
-			var czas = getTime();
+			//var time = getTime();
 			console.log(username);
-			socket.emit('setAnswer', {
+			socket.emit('sendAnswer', {
 				username: username,
-				time: time
+				//time: time
 			});
 	});
 
