@@ -70,4 +70,11 @@ io.on('connection', function(socket){
     session.getQuestion(io, socket, data);
     console.log('qestions:' + data);
   });
+
+  socket.on('getAnswer', function(data){
+    var czas = data.czas;
+    console.log('PRZED:'+ data);
+    session.getCzas(io, socket, data);
+
+  });
 });

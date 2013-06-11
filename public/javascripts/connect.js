@@ -29,6 +29,14 @@ $(document).ready(function(){
 		$('#question').append("<img src="+data.path+" alt='pytanie' />");
 	});
 
+	$(document).on('click','#getAnswer', function(){
+			var czas = getTime();
+			console.log(czas);
+			socket.emit('getAnswer', {
+
+			});
+	});
+
 	$(document).on('click','#goodAnswer', function(){
 		
 	});

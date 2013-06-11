@@ -19,8 +19,8 @@ exports.getQuestion = function(io, socket, data){
 		data.questions.push(pytanko);
 		console.log('CONTROLLER PATH: ' + pytanko);
 	};
-	socket.emit('sendQuestion', {
+	socket.broadcast.emit('sendQuestion', {
 		username: data.username,
 		path : pytanko
-	})
+	});
 };
